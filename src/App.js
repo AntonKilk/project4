@@ -1,4 +1,13 @@
 import React from 'react';
+// import nanoid from 'nanoid'
+// import dictionary from 'nanoid-dictionary'
+
+ let generate = require('nanoid/generate')
+
+let LOWERCASE = require('nanoid-dictionary/lowercase')
+let UPPERCASE = require('nanoid-dictionary/uppercase')
+let NUMBERS = require('nanoid-dictionary/numbers')
+let SYMBOLS = ['+', '-', '?', '*', '_', '!']
 
 let Length = (props) => {
   return <div>
@@ -63,19 +72,18 @@ class App extends React.Component{
 
   generatePassword = (length, lowerCase, upperCase, symbols) => {
 
-    let generate = require('nanoid/generate')
-    let password = generate('0123456789',length)
+    let alphabet = NUMBERS
   
     if (lowerCase){
-      password = generate('0123456789abcdefgh',length)
+      alphabet += LOWERCASE
     } 
     if (upperCase){
-      password = generate('0123456789ABCDEFGH',length)
+      alphabet += UPPERCASE
     } 
     if (symbols){
-      password = generate('0123456789_-?*@',length)
+      alphabet += SYMBOLS
     } 
-    return password
+    return generate(alphabet,length)
   }
 
   setLength = (e) => {
@@ -115,9 +123,7 @@ class App extends React.Component{
   }
 
   render() {
-    console.log(this.state.withLowercase)
-    console.log(this.state.withUppercase)
-    console.log(this.state.withSymbols)
+
     return <div>
     <h4>Generate a secure password</h4>
     <div>
