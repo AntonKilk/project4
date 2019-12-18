@@ -8,7 +8,6 @@ let LOWERCASE = require('nanoid-dictionary/lowercase')
 let UPPERCASE = require('nanoid-dictionary/uppercase')
 let NUMBERS = require('nanoid-dictionary/numbers')
 let SYMBOLS = [`+-!*&`]
-console.log(SYMBOLS)
 
 let Length = (props) => {
   return <div>
