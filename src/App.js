@@ -21,43 +21,13 @@ let Length = (props) => {
   </div>
 }
 
-let Numbers = () => {
+let Checkbox = (props) => {
   return <div>
     <input 
       type="checkbox"
-      checked
-      readOnly></input>
-    <label>Numbers (always enabled)</label>  
-  </div>
-}
-
-let Lowercase = (props) => {
-  return <div>
-    <input 
-      type="checkbox"
-      checked={props.lowerCase === true}
-      onChange={props.setLowerCase} ></input>
-    <label>Lowercase</label>  
-  </div>
-}
-
-let Uppercase = (props) => {
-  return <div>
-    <input 
-      type="checkbox"
-      checked={props.upperCase === true}
-      onChange={props.setUpperCase} ></input>
-    <label>Uppercase</label>  
-  </div>
-}
-
-let Symbols = (props) => {
-  return <div>
-    <input 
-      type="checkbox"
-      checked={props.symbols === true}
-      onChange={props.setSymbols} ></input>
-    <label>Symbols</label>  
+      checked={props.checked}
+      onChange={props.onChange}></input>
+    <label>{props.label}</label>  
   </div>
 }
 
@@ -123,7 +93,6 @@ class App extends React.Component{
   }
 
   render() {
-
     return <div>
     <h4>Generate a secure password</h4>
     <div>
@@ -136,19 +105,26 @@ class App extends React.Component{
       value={this.state.withLength} 
       setLength={this.setLength} />
     <br /> 
-    <Numbers />
+    <Checkbox
+      readOnly={true}
+      checked={true} 
+      label={"Numbers (always enabled)"}  
+       />
     <br /> 
-    <Lowercase
-      lowerCase={this.state.withLowercase}
-      setLowerCase={this.setLowerCase} />
+    <Checkbox
+      checked={this.state.withLowercase}
+      onChange={this.setLowerCase}
+      label={"Lowercase"} />
     <br />  
-    <Uppercase 
-      upperCase={this.state.withUppercase}
-      setUpperCase={this.setUpperCase} />
+    <Checkbox 
+      checked={this.state.withUppercase}
+      onChange={this.setUpperCase}
+      label={"Uppercase"} />
     <br /> 
-    <Symbols 
-      symbols={this.state.withSymbols}
-      setSymbols={this.setSymbols} />
+    <Checkbox 
+      checked={this.state.withSymbols}
+      onChange={this.setSymbols}
+      label={"Symbols"} />
     <br />
     <div>
       <button 
