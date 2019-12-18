@@ -1,13 +1,12 @@
 import React from 'react';
-// import nanoid from 'nanoid'
-// import dictionary from 'nanoid-dictionary'
+import LOWERCASE from 'nanoid-dictionary/lowercase'
+import UPPERCASE from 'nanoid-dictionary/uppercase'
+import NUMBERS from 'nanoid-dictionary/numbers'
 
- let generate = require('nanoid/generate')
+let SYMBOLS = `+-!*&`
+let generate = require('nanoid/generate')
 
-let LOWERCASE = require('nanoid-dictionary/lowercase')
-let UPPERCASE = require('nanoid-dictionary/uppercase')
-let NUMBERS = require('nanoid-dictionary/numbers')
-let SYMBOLS = [`+-!*&`]
+
 
 let Length = (props) => {
   return <div>
@@ -60,36 +59,23 @@ class App extends React.Component{
     this.setState({withLength: e.target.value})
   }
 
-  setLowerCase = (comp) => {
-    if (this.state.withLowercase){
-      return this.setState({withLowercase: false})
-    } else {
-       return this.setState({withLowercase: true})
-    }
+  toggleWithLowercase = () => {
+    return this.setState(state => ({withLowercase: !state.withLowercase}))
   }
 
-  setUpperCase = () => {
-    if (this.state.withUppercase){
-      return this.setState({withUppercase: false})
-    } else {
-       return this.setState({withUppercase: true})
-    }
+  toggleWithUppercase = () => {
+    return this.setState(state => ({withUppercase: !state.withUppercase}))
   }
 
-  setSymbols = () => {
-    if (this.state.withSymbols){
-      return this.setState({withSymbols: false})
-    } else {
-       return this.setState({withSymbols: true})
-    }
+  toggleWithSymbols = () => {
+    return this.setState(state => ({withSymbols: !state.withSymbols}))
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = () => {
     this.setState({password: this.generatePassword(this.state.withLength,
         this.state.withLowercase,
         this.state.withUppercase,
         this.state.withSymbols)});
-    e.preventDefault();
   }
 
   render() {
@@ -113,17 +99,17 @@ class App extends React.Component{
     <br /> 
     <Checkbox
       checked={this.state.withLowercase}
-      onChange={this.setLowerCase}
+      onChange={this.toggleWithLowercase}
       label={"Lowercase"} />
     <br />  
     <Checkbox 
       checked={this.state.withUppercase}
-      onChange={this.setUpperCase}
+      onChange={this.toggleWithUppercase}
       label={"Uppercase"} />
     <br /> 
     <Checkbox 
       checked={this.state.withSymbols}
-      onChange={this.setSymbols}
+      onChange={this.toggleWithSymbols}
       label={"Symbols"} />
     <br />
     <div>
