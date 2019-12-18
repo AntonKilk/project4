@@ -7,7 +7,8 @@ import React from 'react';
 let LOWERCASE = require('nanoid-dictionary/lowercase')
 let UPPERCASE = require('nanoid-dictionary/uppercase')
 let NUMBERS = require('nanoid-dictionary/numbers')
-let SYMBOLS = ['+', '-', '?', '*', '_', '!']
+let SYMBOLS = [`+-!*&`]
+console.log(SYMBOLS)
 
 let Length = (props) => {
   return <div>
@@ -60,7 +61,7 @@ class App extends React.Component{
     this.setState({withLength: e.target.value})
   }
 
-  setLowerCase = () => {
+  setLowerCase = (comp) => {
     if (this.state.withLowercase){
       return this.setState({withLowercase: false})
     } else {
