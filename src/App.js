@@ -92,8 +92,9 @@ class App extends React.Component{
       setLength={this.setLength} />
     <br /> 
     <Checkbox
-      readOnly={true}
-      checked={true} 
+      checked={true}
+      readOnly
+      onChange={()=>true}
       label={"Numbers (always enabled)"}  
        />
     <br /> 
